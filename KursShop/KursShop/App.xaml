@@ -1,0 +1,73 @@
+﻿<Application x:Class="KursShop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KursShop"
+             StartupUri="MainWindow.xaml"
+             Exit="Application_Exit">
+    <Application.Resources>
+        <Style TargetType="TextBlock" x:Key="HeadText">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Width" Value="100" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="Basement">
+            <Setter Property="Background" Value="BurlyWood" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        
+        <Style TargetType="TextBox" x:Key="CreationTBox">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="CreationTBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <Style TargetType="Button" x:Key="CreationButton">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <Style TargetType="Image" x:Key="ImageProduct">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="60" />
+            <Setter Property="Height" Value="60" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="HeadLogin">
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="LoginTBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="90" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="OtherTBlockLogin">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Width" Value="170" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Application.Resources>
+</Application>

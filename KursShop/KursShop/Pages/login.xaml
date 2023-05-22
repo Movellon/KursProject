@@ -1,0 +1,36 @@
+﻿<Page x:Class="KursShop.Pages.login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KursShop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="login">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"></RowDefinition>   
+            <RowDefinition Height="*"></RowDefinition>   
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Авторизация" Name="LoginTextBlock" Style="{StaticResource HeadLogin}"></TextBlock>
+        <StackPanel Grid.Row="1">
+            <TextBlock Name="CheckLoginBox" Text="" Width="250" TextAlignment="Center" Margin="120 0 0 0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 20">
+                <TextBlock Style="{StaticResource LoginTBlock}">Логин</TextBlock>
+                <TextBox Width="220" Name="LoginBox" TextChanged="LoginBox_TextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource LoginTBlock}">Пароль</TextBlock>
+                <TextBox Width="220" Name="PasswordBox" TextChanged="PasswordBox_TextChanged" />
+            </StackPanel>
+            <TextBlock Name="LvLPassword" Text="" Width="250" TextAlignment="Center" Margin="120 5 0 0" />
+            <Button Name="BtnLogin" Content="Войти" Style="{StaticResource Basement}" Margin="25 20 0 0" Click="BtnLogin_Click" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 100 0 0">
+                <TextBlock Name="RegistrAndLogin" Text="Не зарегистрированы?" Style="{StaticResource OtherTBlockLogin}"></TextBlock>
+                <Button Name="BtnSmenLogin" Style="{StaticResource Basement}" Content="Зарегистрироваться" Margin="20 0 0 0" Click="BtnSmenLogin_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

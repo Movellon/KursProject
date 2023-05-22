@@ -1,0 +1,21 @@
+﻿<Window x:Class="KursShop.Pages.Kapcha"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursShop.Pages"
+        mc:Ignorable="d"
+        Title="Kapcha" Height="200" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="KapchaOutput" Text="" Style="{StaticResource HeadLogin}"></TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center">
+            <TextBox Name="KapchaInput" Width="200" Margin="0 20"></TextBox>
+            <Button Name="BtnKapcha" Content="OK" Width="30" Click="BtnKapcha_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

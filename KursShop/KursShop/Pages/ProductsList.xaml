@@ -1,0 +1,63 @@
+﻿<Page x:Class="KursShop.Pages.ProductsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KursShop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductsList" Loaded="Page_Loaded">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Grid.Column="0" Width="90" Height="20" Name="CBCost" SelectionChanged="CBCost_SelectionChanged">
+                <ComboBoxItem Content="None" ></ComboBoxItem>
+                <ComboBoxItem Content="Сначала дорогие"></ComboBoxItem>
+                <ComboBoxItem Content="Сначала дешевые"></ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox Grid.Column="1" Width="90" Height="20" Name="CBType" SelectionChanged="CBType_SelectionChanged">
+                <ComboBoxItem Content="None" ></ComboBoxItem>
+                <ComboBoxItem Content="Укулеле"></ComboBoxItem>
+                <ComboBoxItem Content="Акустическая гитара"></ComboBoxItem>
+                <ComboBoxItem Content="Цифровое пианино"></ComboBoxItem>
+                <ComboBoxItem Content="Альтовая флейта"></ComboBoxItem>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                <Image Grid.Column="2" Width="50" Name="AddProductImg" Height="30" Source="../Image/Plus.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 -30 0"/>
+                <Button Grid.Column="2" Name="AddProduct" Width="30" Height="30" BorderThickness="0" Opacity="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 90 0" Click="AddProduct_Click"></Button>
+            </StackPanel>
+        </Grid>
+
+        <ListView Grid.Row="1" Name="ListViewProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                        <Image Grid.Column="0" Source="{Binding imageData}" Style="{StaticResource ImageProduct}" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="320">
+                                <TextBlock Text="{Binding name}"></TextBlock>
+                                <TextBlock Text="{Binding cost}"></TextBlock>
+                            </StackPanel>
+                            <Button Style="{StaticResource Basement}" Margin="10 0 0 0" Content="Купить" Click="Buy_Click"/>
+                            <Button Name="BtnEdit" Style="{StaticResource Basement}" Margin="10 0 0 0" Content="Редактировать" Click="Edit_Click" Visibility="{Binding VisibilityButton}"/>
+                            <Button Name="BtnDelete" Style="{StaticResource Basement}" Margin="10 0 0 0" Content="Удалить" Click="Delete_Click" Visibility="{Binding VisibilityButton}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

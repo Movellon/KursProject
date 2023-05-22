@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MusicDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="10" />
+    <Property Name="id_role" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="cost" Type="int" />
+    <Property Name="id_tag" Type="int" />
+    <Property Name="quantity_product" Type="int" />
+    <Property Name="imageData" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products_Client">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_clients" />
+    </Key>
+    <Property Name="id_product" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="nameProduct" Type="varchar" MaxLength="50" />
+    <Property Name="id_clients" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="imageData" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="id_tag" />
+    </Key>
+    <Property Name="id_tag" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Product_Tags">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="id_tag" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="id_tag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MusicDBModelContainer">
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products_Client" EntityType="Self.Products_Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product_Tags" Association="Self.FK_Product_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

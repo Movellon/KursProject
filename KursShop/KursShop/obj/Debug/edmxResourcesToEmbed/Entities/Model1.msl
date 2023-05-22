@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MusicDBModelContainer" CdmEntityContainer="MusicDBEntities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="MusicDBModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="login" ColumnName="login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="MusicDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="imageData" ColumnName="imageData" />
+          <ScalarProperty Name="quantity_product" ColumnName="quantity_product" />
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products_Client">
+      <EntityTypeMapping TypeName="MusicDBModel.Products_Client">
+        <MappingFragment StoreEntitySet="Products_Client">
+          <ScalarProperty Name="imageData" ColumnName="imageData" />
+          <ScalarProperty Name="id_clients" ColumnName="id_clients" />
+          <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MusicDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="MusicDBModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

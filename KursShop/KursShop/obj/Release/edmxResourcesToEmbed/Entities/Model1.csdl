@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MusicDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="MusicDBModel.Clients" />
+    <EntitySet Name="Product" EntityType="MusicDBModel.Product" />
+    <EntitySet Name="Products_Client" EntityType="MusicDBModel.Products_Client" />
+    <EntitySet Name="sysdiagrams" EntityType="MusicDBModel.sysdiagrams" />
+    <EntitySet Name="Tags" EntityType="MusicDBModel.Tags" />
+    <AssociationSet Name="FK_Product_Tags" Association="MusicDBModel.FK_Product_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="id_role" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="id_tag" Type="Int32" />
+    <Property Name="quantity_product" Type="Int32" />
+    <Property Name="imageData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Tags" Relationship="MusicDBModel.FK_Product_Tags" FromRole="Product" ToRole="Tags" />
+  </EntityType>
+  <EntityType Name="Products_Client">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_clients" />
+    </Key>
+    <Property Name="id_product" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="nameProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_clients" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="imageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="id_tag" />
+    </Key>
+    <Property Name="id_tag" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="MusicDBModel.FK_Product_Tags" FromRole="Tags" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Product_Tags">
+    <End Type="MusicDBModel.Tags" Role="Tags" Multiplicity="0..1" />
+    <End Type="MusicDBModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="id_tag" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="id_tag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
